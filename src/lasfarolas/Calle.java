@@ -65,6 +65,24 @@ public class Calle {
 		}
 		return true;
 	}
+	public boolean encenderLucesMaxi() {
+		int farolaLejana = this.farolas.length-1;
+		for(int i = 0;i<this.puntos.length;i++) {
+			while(farolaLejana >= 0 && !this.farolas[farolaLejana].inRange(this.puntos[i])) {
+				farolaLejana--;
+			}
+			if(farolaLejana == -1) {
+				return false;
+			}
+			while(i<this.puntos.length && this.farolas[farolaLejana].inRange(this.puntos[i])) {
+				this.farolas[farolaLejana].setEncendido();
+				i++;
+			}
+			farolaLejana = this.farolas.length-1;
+			i--;
+		}
+		return true;
+	}
 
 	public void mostrarListadoDeLuces() {
 		for(int i=0; i<farolas.length; i++) {

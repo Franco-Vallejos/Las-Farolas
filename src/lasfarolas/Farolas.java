@@ -17,6 +17,15 @@ public class Farolas {
 	public int getRange(){
 		return range;
 	}
+	public int getMaxPos() {
+		return pos + range;
+	}
+	public int getMinPos() {
+		return pos - range;
+	}
+	public boolean inRange(int pos) {
+		return pos >= this.getMinPos() && pos <= this.getMaxPos();
+	}
 	
 	public boolean getEncendido(){
 		return encendido;
@@ -32,8 +41,10 @@ public class Farolas {
 	
 	@Override
 	public String toString() {
-		return  "Farol en la posicion: " + pos +
+		return  "---------------------------" +
+				"\nFarol en la posicion: " + pos +
 				"\nCon rango: " + range +
 				"\nSe encuentra encendido: " + encendido;
+				
 		}
 }
